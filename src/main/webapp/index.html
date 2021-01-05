@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>xxx</title>
+    <title>EasyConference</title>
+    <link rel="stylesheet" href="resources/css/main.css" />
+    
 </head>
 <body>
     Welcome<br/><input id="text" type="text"/>
@@ -10,13 +12,26 @@
     <button onclick="closeWebSocket()">close websocket</button>
     <hr/>
     <div id="message"></div>
+    
+    <h1>Realtime communication with WebRTC</h1>
+
+  	<video id="localVideo" autoplay playsinline></video>
+  	<video id="remoteVideo" autoplay playsinline></video>
+
+  	<div>
+    	<button id="startButton">Start</button>
+    	<button id="callButton">Call</button>
+    	<button id="hangupButton">Hang Up</button>
+  	</div>
+  	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  	<script src="resources/javascript/main.js"></script>
 </body>
 
 <script type="text/javascript">
     var websocket = null;
 
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:8082/websocket/websocket");
+        websocket = new WebSocket("ws://localhost:8082/signalserver/websocket");
     }
     else {
         alert(' Not support websocket')
